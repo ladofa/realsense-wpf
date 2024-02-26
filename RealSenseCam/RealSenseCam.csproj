@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Intel.RealSenseWithNativeDll" Version="2.51.1.1" />
+    <PackageReference Include="OpenCvSharp4" Version="4.6.0.20220608" />
+    <PackageReference Include="OpenCvSharp4.runtime.win" Version="4.6.0.20220608" />
+    <PackageReference Include="OpenCvSharp4.WpfExtensions" Version="4.6.0.20220608" />
+    <PackageReference Include="OpenRealSense" Version="1.12.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Intel.RealSense">
+      <HintPath>C:\Program Files (x86)\Intel RealSense SDK 2.0\bin\x86\Intel.Realsense.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
