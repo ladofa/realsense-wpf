@@ -57,8 +57,6 @@ namespace RealSenseWpf
 
                     string output = $"{dist}";
 
-
-
                     this.Dispatcher.Invoke(() =>
                     {
                         ColorImage.Source = cv.WpfExtensions.WriteableBitmapConverter.ToWriteableBitmap(bgr);

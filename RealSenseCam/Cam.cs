@@ -26,7 +26,7 @@ namespace RealSenseCam
 
             //json 설정을 하고 싶으면 아래 주석을 해제
             //var device = Intel.RealSense.SerializableDevice.FromDevice(devices[0]);
-            //device.JsonConfiguration = System.IO.File.ReadAllText("L515_SHORT.json");
+            //device.JsonConfiguration = System.IO.File.ReadAllText("asdf.json");
 
             pipe = new Pipeline();
             var config = new Config();
@@ -72,37 +72,38 @@ namespace RealSenseCam
             var vf = f as VideoFrame;
             int w = vf.Width;
             int h = vf.Height;
-            Mat m = null;
+            Mat? m = null;
             if (vf.Profile.Format == Format.Bgr8)
             {
-                m = new Mat(h, w, MatType.CV_8UC3, f.Data);
+                
+                m = Mat.FromPixelData(h, w, MatType.CV_8UC3, f.Data);
                 return m;
             }
             else if (vf.Profile.Format == Format.Rgb8)
             {
-                m = new Mat(h, w, MatType.CV_8UC3, f.Data);
+                m = Mat.FromPixelData(h, w, MatType.CV_8UC3, f.Data);
                 m.CvtColor(ColorConversionCodes.RGB2BGR);
                 return m;
             }
             else if (vf.Profile.Format == Format.Z16)
             {
-                m = new Mat(h, w, MatType.CV_16UC1, f.Data);
+                m = Mat.FromPixelData(h, w, MatType.CV_16UC1, f.Data);
                 return m;
             }
             else if (vf.Profile.Format == Format.Y8)
             {
-                m = new Mat(h, w, MatType.CV_8UC1, f.Data);
+                m = Mat.FromPixelData(h, w, MatType.CV_8UC1, f.Data);
                 return m;
             }
             else if (vf.Profile.Format == Format.Disparity32)
             {
-                m = new Mat(h, w, MatType.CV_32FC1, f.Data);
+                m = Mat.FromPixelData(h, w, MatType.CV_32FC1, f.Data);
                 return m;
             }
             else
             {
                 //MessageBox.Show("Error occurred!");
-                return null;
+                return new Mat();
             }
         }
 
